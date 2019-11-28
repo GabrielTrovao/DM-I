@@ -19,12 +19,17 @@ library(cluster)
 
 
 #THIS DATASET CONCERNS THE Aotizhongxin STATION
+
+#DATA IMPORT
 site1 <- read.csv("PRSA_Data_Aotizhongxin_20130301-20170228.csv",header = TRUE)
 #site1ST <- read.csv("PRSA_Data_Aotizhongxin_20130301-20170228.csv",header = TRUE)
 
 #DATA PRE-PROCESSING AND CLEANING
 anyNA(site1$PM10) #TRUE
 filter(site1,day>31)
+filter(site1,day<1)
+filter(site1,month>12)
+filter(site1,month<1)
 
 #REMOVING POINTLESS COLUMNS 
 site1 <- select(site1,-"station")
